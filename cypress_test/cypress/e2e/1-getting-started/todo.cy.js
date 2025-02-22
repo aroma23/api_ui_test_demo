@@ -11,8 +11,7 @@
 // please read our getting started guide:
 // https://on.cypress.io/introduction-to-cypress
 import { getProducts, getProductById } from "test-publish-es6-package";
-import { Users } from "../../api/Users";
-
+import {Users} from 'users-es6-package';
 describe("example to-do app", () => {
   const result = {};
   beforeEach(() => {
