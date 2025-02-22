@@ -11,6 +11,7 @@
 // please read our getting started guide:
 // https://on.cypress.io/introduction-to-cypress
 import { getProducts, getProductById } from "test-publish-es6-package";
+import { readUsers } from "../../api/Users";
 
 describe("example to-do app", () => {
   const result = {};
@@ -18,12 +19,20 @@ describe("example to-do app", () => {
     cy.visit("https://example.cypress.io/todo");
   });
 
-  before(() => {
-    cy.wrap(getProducts()).then((res) => {
+  // before(() => {
+  //   cy.wrap(getProducts()).then((res) => {
+  //     expect(res.status).to.be.eql(200);
+  //     console.log(res.data);
+  //     result.product = res.data[0];
+  //   });
+  // });
+
+  it.only("axios client", () => {
+    cy.wrap(readUsers()).then((res) => {
+      console.log("Muthukumar: " + res.data.data.email);
       expect(res.status).to.be.eql(200);
-      console.log(res.data);
-      result.product = res.data[0];
-    });
+      result.email = res.data.data.email;
+    })
   });
 
   it("displays two todo items by default", () => {
