@@ -11,7 +11,7 @@
 // please read our getting started guide:
 // https://on.cypress.io/introduction-to-cypress
 import { getProducts, getProductById } from "test-publish-es6-package";
-import { readUsers } from "../../api/Users";
+import { Users } from "../../api/Users";
 
 describe("example to-do app", () => {
   const result = {};
@@ -27,11 +27,24 @@ describe("example to-do app", () => {
   //   });
   // });
 
-  it.only("axios client", () => {
-    cy.wrap(readUsers()).then((res) => {
+  it("axios client read", () => {
+    cy.wrap(new Users("").readUsers()).then((res) => {
       console.log("Muthukumar: " + res.data.data.email);
       expect(res.status).to.be.eql(200);
       result.email = res.data.data.email;
+    })
+  });
+
+  it.only("axios client write", () => {
+    cy.wrap(new Users("https://reqres.in/api").addUser({
+      "name": "morpheus",
+      "job": "leader",
+      "id": "966",
+      "createdAt": "2025-02-22T17:32:18.618Z"
+    })).then((res) => {
+      expect(res.status).to.be.eql(201);
+      console.log("Muthukumar: " + res.data.name);
+      result.name = res.data.name;
     })
   });
 
