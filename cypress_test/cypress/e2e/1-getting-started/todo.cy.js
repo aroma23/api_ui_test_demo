@@ -10,25 +10,26 @@
 // what makes it such an awesome testing tool,
 // please read our getting started guide:
 // https://on.cypress.io/introduction-to-cypress
-// import { getProducts, getProductById } from "test-publish-es6-package";
-import { Users } from "../../api/Users";
+import { getProducts, getProductById } from "test-publish-es6-package";
+import { Users } from 'users-es6-pactum-package'
 
 describe("example to-do app", () => {
   const users = {};
+  const result = {};
   const usersService = new Users("https://reqres.in/api");
   beforeEach(() => {
     cy.visit("https://example.cypress.io/todo");
   });
 
   before(() => {
-    // cy.wrap(getProducts()).then((res) => {
-    //   expect(res.status).to.be.eql(200);
-    //   console.log(res.data);
-    //   result.product = res.data[0];
-    // });
+    cy.wrap(getProducts()).then((res) => {
+      expect(res.status).to.be.eql(200);
+      console.log(res.data);
+      result.product = res.data[0];
+    });
   });
 
-  it.only("using pactum api client read users", () => {
+  it("using pactum api client read user", () => {
     cy.wrap(usersService.readUser('1')).then((res) => {
       expect(res.statusCode).to.be.eql(200);
       console.log(res.body.data.email);
@@ -37,7 +38,7 @@ describe("example to-do app", () => {
     });
   });
 
-  it.only("using pactum api client add users", () => {
+  it("using pactum api client add users", () => {
     cy.wrap(usersService.addUser({
       "name": "morpheus",
       "job": "leader",

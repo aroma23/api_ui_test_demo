@@ -18,6 +18,7 @@
     "test-publish-es6-package": "^1.0.42"
   },
   "dependencies": {
-    "pactum": "^3.7.6"
+    "pactum": "^3.7.6",
+    "users-es6-pactum-package": "^1.0.0"
   }
 }
