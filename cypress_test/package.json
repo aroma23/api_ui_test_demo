@@ -16,5 +16,8 @@
     "esbuild": "^0.24.0",
     "esbuild-plugin-polyfill-node": "^0.3.0",
     "test-publish-es6-package": "^1.0.42"
+  },
+  "dependencies": {
+    "pactum": "^3.7.6"
   }
 }
