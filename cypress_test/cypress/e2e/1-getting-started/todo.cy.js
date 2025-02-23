@@ -11,10 +11,11 @@
 // please read our getting started guide:
 // https://on.cypress.io/introduction-to-cypress
 // import { getProducts, getProductById } from "test-publish-es6-package";
-import { readUser } from "../../api/Users";
+import { Users } from "../../api/Users";
 
 describe("example to-do app", () => {
-  const result = {};
+  const users = {};
+  const usersService = new Users("https://reqres.in/api");
   beforeEach(() => {
     cy.visit("https://example.cypress.io/todo");
   });
@@ -27,12 +28,26 @@ describe("example to-do app", () => {
     // });
   });
 
-  it.only("displays two todo", () => {
-    console.log(readUser());
-    cy.wrap(readUser()).then((res) => {
+  it.only("using pactum api client read users", () => {
+    cy.wrap(usersService.readUser('1')).then((res) => {
       expect(res.statusCode).to.be.eql(200);
       console.log(res.body.data.email);
-      result.product = res.body.data.email;
+      console.log(res.body.data.id);
+      users.email = res.body.data.email;
+    });
+  });
+
+  it.only("using pactum api client add users", () => {
+    cy.wrap(usersService.addUser({
+      "name": "morpheus",
+      "job": "leader",
+      "id": "966",
+      "createdAt": "2025-02-22T17:32:18.618Z"
+    })).then((res) => {
+      expect(res.statusCode).to.be.eql(201);
+      console.log(res.body.name);
+      console.log(res.body.id);
+      users.name = res.body.name;
     });
   });
 
