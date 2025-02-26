@@ -13,12 +13,13 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.3",
     "axios": "^1.7.7",
     "cypress": "^13.15.0",
+    "dotenv": "^16.4.7",
     "esbuild": "^0.24.0",
     "esbuild-plugin-polyfill-node": "^0.3.0",
     "test-publish-es6-package": "^1.0.42"
   },
   "dependencies": {
     "pactum": "^3.7.6",
-    "users-es6-pactum-package": "^1.0.3"
+    "users-es6-pactum-package": "^1.0.5"
   }
 }

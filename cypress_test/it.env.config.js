@@ -5,7 +5,7 @@ import esbuildPreprocessor from "./cypress/support/es-build-preprocessor.js";
 export default defineConfig({
   env: {
     API_BASE_URL: "https://fakestoreapi.com/",
-    VITE_USERS_API_BASE_URL: "https://reqres.in/api",
+    VITE_USERS_API_BASE_URL: "https://reqres-it.in/api",
     API_REQUEST_TIMEOUT: "10000",
   },
   e2e: {
